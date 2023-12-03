@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Thêm nhân viên</h1>
+<form method="POST" th:action="@{/insertEmployee}" th:object="${employee}">
+
+    <p>Họ tên: </p>
+    <input  type="text" name="hoten" th:field="*{fullname}"/>
+
+    <p>Ngày sinh: </p>
+    <input type="text" name="ngaysinh" th:field="*{dob}"/>
+
+    <p>Địa chỉ: </p>
+    <input type="text" name="diachi" th:field="*{address}"/>
+
+    <p>Số điện thoại: </p>
+    <input type="text" name="sodienthoai" th:field="*{phone}"/>
+
+    <p>Email: </p>
+    <input type="text" name="email" th:field="*{email}"/>
+
+
+<!--    <input type="hidden" name="status" th:value=""/>-->
+    <br>
+    <br>
+    <button type="submit">Lưu</button>
+</form>
+</body>
+</html>

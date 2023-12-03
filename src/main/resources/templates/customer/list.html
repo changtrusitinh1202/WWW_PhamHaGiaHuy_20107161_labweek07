@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh sách nhân viên</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<div th:switch="${customerList}" >
+  <h2 th:case="null">No employees yet!</h2>
+  <div th:case="*">
+    <h2>Employees</h2>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="customer : ${customerList}">
+        <td th:text="${customer.getId()}"></td>
+        <td th:text="${customer.getName()}"></td>
+        <td th:text="${customer.getAddress()}"></td>
+        <td th:text="${customer.getEmail()}"></td>
+        <td th:text="${customer.getPhone()}"></td>
+        <td><a th:href="@{/update/{id}(id=${customer.getId()})}">Edit</a></td>
+        <td><a th:href="@{/delete/{id}(id=${customer.getId()})}" onclick="return confirm('Bạn muốn xóa khách hàng này?')">Delete</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
